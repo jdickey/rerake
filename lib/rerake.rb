@@ -1,4 +1,7 @@
+
 require "rerake/version"
+
+require 'rerake/command_output'
 
 # Main containing module for Rerake, a Rake output-parsing and -reporting tool.
 module Rerake

@@ -7,6 +7,7 @@ require 'simplecov'
 require 'minitest/autorun'
 require 'codeclimate-test-reporter'
 require 'coveralls'
+require 'pry-byebug'
 
 SimpleCov.start do
   add_filter '/vendor/'

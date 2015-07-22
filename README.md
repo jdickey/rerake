@@ -45,6 +45,10 @@ If, on the other hand, you've installed it into your system Gem repository, then
 
 as you would any other command.
 
+### Notes on Tool Usage
+
+* Cane produces *no output* unless it detects violations; hence, there is no way to tell by inspecting the output from `bundle exec rake` whether or not Cane is actually installed in the application being inspected.
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment. Run `bundle exec rerake` to use the gem in this directory, ignoring other installed copies of this gem.
