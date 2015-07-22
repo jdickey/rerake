@@ -1,5 +1,10 @@
 require "rerake/version"
 
+# Main containing module for Rerake, a Rake output-parsing and -reporting tool.
 module Rerake
-  # Your code goes here...
+  def self.call
+    print 'Running Rake...'
+    puts 'done.'
+    puts "Parsers would do their thing here."
+  end
 end

@@ -1,11 +1,14 @@
+
 require 'test_helper'
 
-class RerakeTest < Minitest::Test
-  def test_that_it_has_a_version_number
-    refute_nil ::Rerake::VERSION
+describe 'Rerake.call' do
+  it 'will eventually do something useful' do
+    skip 'It does nothing yet.'
   end
+end
 
-  def test_it_does_something_useful
-    assert false
+describe 'Rerake::VERSION' do
+  it 'exists' do
+    expect(::Rerake::VERSION).wont_be_nil
   end
 end
