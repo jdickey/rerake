@@ -36,6 +36,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rake', '~> 10.0'
   spec.add_development_dependency 'minitest-matchers', '~> 1.4'
   spec.add_development_dependency 'minitest-reporters', '~> 1.0'
+  spec.add_development_dependency 'coveralls', '~> 0.8'
+  spec.add_development_dependency 'codeclimate-test-reporter', '~> 0.4'
   # Why are these *development* dependencies when the whole point of this Gem is
   # to parse their output from running Rake (on another app)? Because it's not
   # an error for any of these not to be used by that other app, even though we

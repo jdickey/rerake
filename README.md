@@ -1,5 +1,8 @@
 # Rerake
 
+[![Code Climate](https://codeclimate.com/github/jdickey/rerake/badges/gpa.svg)](https://codeclimate.com/github/jdickey/rerake)
+[![Coverage Status](https://coveralls.io/repos/jdickey/rerake/badge.png?branch=master&service=github)](https://coveralls.io/github/jdickey/rerake?branch=master)
+
 Rerake is so called because it "runs `rake` again", producing a formatted summary of results suitable for inclusion in a commit message in your SCM tool of choice.
 
 When run from your project root directory, it runs the default `rake` task, capturing its output, and then produces one-line summaries for each of the following:
