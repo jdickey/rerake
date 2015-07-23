@@ -1,6 +1,4 @@
 
-require 'pry-byebug'
-
 module Rerake
   module Parser
     # Parses MiniTest (Spec/Unit) output, storing reported count values.

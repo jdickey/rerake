@@ -1,8 +1,6 @@
 
 require 'test_helper'
 
-require 'pry-byebug'
-
 require 'rerake/parser/mini_test'
 
 describe 'Rerake::Parser::MiniTest' do
@@ -61,6 +59,6 @@ describe 'Rerake::Parser::MiniTest' do
       it 'maintains zero values for all counts' do
         expect(obj.counts.values.detect(&:nonzero?)).must_be_nil
       end
-    end
+    end # describe 'when given invalid MiniTest output'
   end # describe 'has a #parse method that'
 end # describe 'Rerake::Parser::MiniTest'
