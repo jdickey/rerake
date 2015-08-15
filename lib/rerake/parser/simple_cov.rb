@@ -9,6 +9,10 @@ module Rerake
           pair.first.send pair.last
         end
 
+        def self.first_match(lines)
+          lines.grep(matcher).first
+        end
+
         def self.matcher
           pattern_str = 'Coverage report .+?' \
               ' (\d+) \/ (\d+) LOC' \
@@ -43,8 +47,17 @@ module Rerake
         end
       end
 
+      def captures
+        detail_line.match(Internals.matcher).captures
+      end
+
+      def captures_and_conversions
+        conversions = [:to_f, :to_f, :to_i]
+        captures.zip(conversions)
+      end
+
       def detail_line
-        @detail_line ||= Array(report_lines).grep(Internals.matcher).first
+        @detail_line ||= Internals.first_match Array(report_lines)
       end
 
       def detail_line_part_strings
@@ -56,9 +69,7 @@ module Rerake
       end
 
       def values
-        captures = detail_line.match(Internals.matcher).captures
-        conversions = [:to_f, :to_f, :to_i]
-        captures.zip(conversions).map { |pair| Internals.call_converter pair }
+        captures_and_conversions.map { |pair| Internals.call_converter pair }
       end
     end # class Rerake::Parser::SimpleCov
   end

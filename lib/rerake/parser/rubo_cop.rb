@@ -5,6 +5,10 @@ module Rerake
     class RuboCop
       # Internal methods not affecting or depending on instance state.
       module Internals
+        def self.first_match_from(report_lines)
+          Array(report_lines).grep(matcher).first
+        end
+
         def self.matcher
           /(\d+) files inspected, (\S+) offenses detected/
         end
@@ -41,7 +45,7 @@ module Rerake
       end
 
       def detail_line
-        @detail_line ||= Array(report_lines).grep(Internals.matcher).first
+        @detail_line ||= Internals.first_match_from(report_lines)
       end
 
       def detail_line_part_strings

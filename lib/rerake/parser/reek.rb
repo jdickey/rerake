@@ -18,7 +18,7 @@ module Rerake
         end
 
         def self._matcher
-          /(\d+) total warning/
+          /^(\d+) total warning/
         end
       end
       private_constant :Internals

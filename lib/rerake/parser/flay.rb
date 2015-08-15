@@ -5,6 +5,10 @@ module Rerake
     class Flay
       # Internal methods not affecting or depending on instance state.
       module Internals
+        def self.first_match_from_lines(report_lines, regexp)
+          report_lines.grep(regexp).first
+        end
+
         def self.matcher
           /Total score \(lower is better\) = (\d+)/
         end
@@ -29,10 +33,12 @@ module Rerake
 
       attr_reader :report_lines
 
+      def assign_count(index, value)
+        @counts[indexes[index].to_sym] = value
+      end
+
       def assign_counts
-        values.each_with_index do |value, index|
-          @counts[indexes[index].to_sym] = value
-        end
+        values.each_with_index { |value, index| assign_count index, value }
       end
 
       def captures
@@ -40,7 +46,8 @@ module Rerake
       end
 
       def detail_line
-        @detail_line ||= Array(report_lines).grep(Internals.matcher).first
+        @detail_line ||= Internals.first_match_from_lines Array(report_lines),
+                                                          Internals.matcher
       end
 
       def detail_line_part_strings
@@ -48,13 +55,15 @@ module Rerake
       end
 
       def indexes
-        detail_line_part_strings.map(&:to_sym)
+        @indexes ||= detail_line_part_strings.map(&:to_sym)
+      end
+
+      def initial_count_values
+        Array(0) * indexes.count
       end
 
       def initial_counts
-        ret = Struct.new(*indexes).new
-        indexes.each { |index| ret[index] = 0 }
-        ret
+        Struct.new(*indexes).new *initial_count_values
       end
 
       def values
