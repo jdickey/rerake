@@ -39,7 +39,7 @@ end
 
 FlogTask.new do |t|
   t.verbose = true
-  t.threshold = 220 # default is 200
+  t.threshold = 250 # default is 200
   t.instance_variable_set :@methods_only, true
   t.dirs = %w(lib) # Look, Ma! No tests! (Run for `test` periodically.)
 end

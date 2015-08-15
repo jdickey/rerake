@@ -57,7 +57,7 @@ module Rerake
       class Scores
         # Internal methods that neither depend on nor modiify instance state.
         module Internals
-          def self.first_part_of_line(line)
+          def self._first_part_of_line(line)
             parts = line.split(':')
             return '0.0' if parts.count == 1
             parts.first
@@ -68,7 +68,7 @@ module Rerake
           end
 
           def self.value_from(line)
-            Float(first_part_of_line line)
+            Float(_first_part_of_line line)
           end
 
           def self.values
@@ -112,6 +112,10 @@ module Rerake
           self
         end
       end # class Rerake::Parser::Flog::Scores
+
+      ##################### ############################## #####################
+      ##################### ### Flog class code below. ### #####################
+      ##################### ############################## #####################
 
       # Internal methods that neither depend on nor affect instance state.
       module Internals
