@@ -1,7 +1,6 @@
 require "bundler/gem_tasks"
 require "rake/testtask"
 
-require 'cane/rake_task'
 require 'rake/tasklib'
 require 'rake/testtask'
 require 'flay_task'
@@ -44,15 +43,9 @@ FlogTask.new do |t|
   t.dirs = %w(lib) # Look, Ma! No tests! (Run for `test` periodically.)
 end
 
-Cane::RakeTask.new do |t|
-  t.abc_max = 8
-  t.abc_glob = '{lib}/**/*.rb'
-  t.style_glob = '{lib,test}/**/*.rb'
-end
-
 # Coveralls not set up yet
 # require 'coveralls/rake/task'
 # Coveralls::RakeTask.new
 
 task(:default).clear
-task default: [:test, :rubocop, :flay, :flog, :reek, :cane]
+task default: [:test, :rubocop, :flay, :flog, :reek]

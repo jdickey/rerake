@@ -7,7 +7,6 @@ require 'simplecov'
 require 'minitest/autorun'
 require 'codeclimate-test-reporter'
 require 'coveralls'
-require 'pry-byebug'
 
 SimpleCov.start do
   add_filter '/vendor/'
@@ -21,5 +20,4 @@ Coveralls.wear! if ENV['COVERALLS_REPO_TOKEN']
 
 require 'minitest/reporters'
 Minitest::Reporters.use! [Minitest::Reporters::DefaultReporter.new(
-  color: true, detailed_skip: true, fast_fail: true)
-                         ]
+  color: true, detailed_skip: true, fast_fail: true)]

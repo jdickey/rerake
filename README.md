@@ -12,14 +12,15 @@ When run from your project root directory, it runs the default `rake` task, capt
 1. RuboCop results (number of files inspected and number of offences found);
 1. Flay total score;
 1. Flog result &mdash; total score, method average, and method high score (with name of method);
-1. Reek total number of warnings;
-1. Cane total number of violations.
+1. Reek total number of warnings.
 
 If a tool's reporting cannot be found in the `rake` output parsed by Rerake, the corresponding report line will be silently omitted.
 
+Very early versions of this tool included support for [Cane](https://github.com/square/cane). I've removed it as its capabilities are (apparently) made redundant by other tools, and because testing (of version 2.6.2) yielded numerous apparent false negatives. It is no longer a dependency of this Gem or application.
+
 ## Installation
 
-Add this line to your application's Gemfile:
+Add this line to your application's Gemfile to use the API:
 
 ```ruby
 gem 'rerake'
@@ -29,7 +30,7 @@ And then execute:
 
     $ bundle
 
-Or install it yourself as:
+Or install the command-line tool as well as the API as:
 
     $ gem install rerake
 
@@ -39,15 +40,11 @@ If installed using your application's `Gemfile`, then run
 
     $ bundle exec rerake
 
-If, on the other hand, you've installed it into your system Gem repository, then run
+If, on the other hand, you've installed it as the regular command-line tool, then run
 
     $ rerake
 
 as you would any other command.
-
-### Notes on Tool Usage
-
-* Cane produces *no output* unless it detects violations; hence, there is no way to tell by inspecting the output from `bundle exec rake` whether or not Cane is actually installed in the application being inspected.
 
 ## Development
 
@@ -63,4 +60,3 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/jdicke
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
