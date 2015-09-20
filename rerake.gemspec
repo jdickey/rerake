@@ -36,12 +36,12 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'rake', '~> 10.0'
 
   spec.add_development_dependency 'minitest-matchers', '~> 1.4'
-  spec.add_development_dependency 'minitest-reporters', '~> 1.0'
+  spec.add_development_dependency 'minitest-reporters', '~> 1.1'
   spec.add_development_dependency 'coveralls', '~> 0.8'
   spec.add_development_dependency 'codeclimate-test-reporter', '~> 0.4'
+  spec.add_development_dependency 'inch', '~> 0.6'
   # spec.add_development_dependency 'pry-byebug', '~> 3.2'
   # spec.add_development_dependency 'awesome_print', '~> 1.6'
-  # spec.add_development_dependency 'inch', '~> 0.6'
 
   # Why are these *development* dependencies when the whole point of this Gem is
   # to parse their output from running Rake (on another app)? Because it's not
@@ -50,7 +50,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'minitest', '~> 5.7'
   spec.add_development_dependency 'flay', '~> 2.6'
   spec.add_development_dependency 'flog', '~> 4.3'
-  spec.add_development_dependency 'reek', '~> 3.1'
+  spec.add_development_dependency 'reek', '~> 3.4'
   spec.add_development_dependency 'rubocop', '~> 0.32'
   spec.add_development_dependency 'simplecov', '~> 0.10'
 end

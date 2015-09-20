@@ -6,6 +6,7 @@ require 'rake/testtask'
 require 'flay_task'
 require 'flog'
 require 'flog_task'
+require 'inch/rake'
 require 'reek/rake/task'
 require 'rubocop/rake_task'
 
@@ -43,9 +44,11 @@ FlogTask.new do |t|
   t.dirs = %w(lib) # Look, Ma! No tests! (Run for `test` periodically.)
 end
 
+Inch::Rake::Suggest.new
+
 # Coveralls not set up yet
 # require 'coveralls/rake/task'
 # Coveralls::RakeTask.new
 
 task(:default).clear
-task default: [:test, :rubocop, :flay, :flog, :reek]
+task default: [:test, :rubocop, :flay, :flog, :reek, :inch]
