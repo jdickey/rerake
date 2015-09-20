@@ -20,5 +20,4 @@ Coveralls.wear! if ENV['COVERALLS_REPO_TOKEN']
 
 require 'minitest/reporters'
 Minitest::Reporters.use! [Minitest::Reporters::DefaultReporter.new(
-  color: true, detailed_skip: true, fast_fail: true)
-                         ]
+  color: true, detailed_skip: true, fast_fail: true)]

@@ -1,12 +1,12 @@
 require "bundler/gem_tasks"
 require "rake/testtask"
 
-require 'cane/rake_task'
 require 'rake/tasklib'
 require 'rake/testtask'
 require 'flay_task'
 require 'flog'
 require 'flog_task'
+require 'inch/rake'
 require 'reek/rake/task'
 require 'rubocop/rake_task'
 
@@ -39,20 +39,16 @@ end
 
 FlogTask.new do |t|
   t.verbose = true
-  t.threshold = 200 # default is 200
+  t.threshold = 300 # default is 200
   t.instance_variable_set :@methods_only, true
   t.dirs = %w(lib) # Look, Ma! No tests! (Run for `test` periodically.)
 end
 
-Cane::RakeTask.new do |t|
-  t.abc_max = 8
-  t.abc_glob = '{lib}/**/*.rb'
-  t.style_glob = '{lib,test}/**/*.rb'
-end
+Inch::Rake::Suggest.new
 
 # Coveralls not set up yet
 # require 'coveralls/rake/task'
 # Coveralls::RakeTask.new
 
 task(:default).clear
-task default: [:test, :rubocop, :flay, :flog, :reek, :cane]
+task default: [:test, :rubocop, :flay, :flog, :reek, :inch]
